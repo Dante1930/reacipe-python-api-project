@@ -1,0 +1,16 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        - DEV=true
+      dockerfile: Dockerfile
+    container_name: django-app
+    command: python manage.py runserver 0.0.0.0:8001
+    volumes:
+      - ./app:/app
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+    restart: always
